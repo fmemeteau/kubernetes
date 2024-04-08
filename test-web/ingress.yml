@@ -20,7 +20,7 @@ spec:
             name: svc-nginx
             port:
               number: 80
-              number: 443
+              #number: 443
   - host: httpd.fr
     http:
       paths:     
@@ -31,4 +31,4 @@ spec:
             name: svc-httpd
             port:
               number: 80
-              number: 443
+              #number: 443
