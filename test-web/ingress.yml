@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-web
+  namespace: toast
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: nginx.fr
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend: 
+          service: 
+            name: svc-nginx
+            port:
+              number: 80
+              number: 443
+  - host: httpd.fr
+    http:
+      paths:     
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-httpd
+            port:
+              number: 80
+              number: 443
